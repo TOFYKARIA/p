@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профиль MQVON</title>
     <style>
-        /* Основные стили */
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
             background-color: #0d0d0d;
             font-family: Arial, sans-serif;
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
 
         .profile-container {
@@ -24,160 +28,204 @@
             background-color: #1a1a1a;
             border: 2px solid #333;
             border-radius: 10px;
-            position: relative;
             overflow: hidden;
-            margin: 20px 0;
+            position: relative;
+            padding-bottom: 20px;
         }
 
         /* Баннер */
         .banner {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+            background: url('https://media0.giphy.com/media/lKaeQAunM3hZaqsOpj/giphy.gif?cid=6c09b952bb1led92pdr8fxzhrqv6fujw0i277qpsqmfd3o2r&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g') no-repeat center/cover;
+            width: 115%;
+            height: 250px;
+            position: relative;
+            left: -7.5%;
+        }
+
+        /* Контейнер для аватара, ника и ролей */
+        .profile-header {
+            position: absolute;
+            top: 105px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Аватар */
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
+            background: url('https://edge-cdn-forummatrpru.matrp.ru/data/avatars/o/165/165267.jpg?1738762725') no-repeat center/cover;
             border-radius: 50%;
-            border: 4px solid #000;
-            background-size: cover;
-            margin: -50px auto 0;
-            position: relative;
+            border: 5px solid black;
+            margin-top: -18px;
         }
 
-        /* Никнейм */
+        /* Ник */
         .nickname {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
+            color: #FF4500;
             text-align: center;
-            margin: 10px 0;
         }
 
-        /* Роли */
-        .roles-container {
+        /* Роли с фоновыми цветами */
+        .roles {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             justify-content: center;
-            padding: 0 20px;
+            width: 100%;
         }
 
         .role {
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 14px;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 16px;
             font-weight: bold;
         }
 
-        /* Эффекты */
+        /* Информация */
+        .info {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 14px;
+            border-radius: 10px;
+            margin: 46px 20px 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .info p {
+            margin: 6px 0;
+        }
+
+        .info i {
+            font-style: italic;
+        }
+
+        /* Эффект снега */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 14px;
+            opacity: 0.8;
+            user-select: none;
+            animation: snowfall linear infinite;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(0px) translateX(0);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(100vh) translateX(var(--end-x));
+                opacity: 0;
+            }
+        }
+
+        /* Новые стили для эффектов */
         .glow {
-            box-shadow: 0 0 8px currentColor;
+            box-shadow: 0 0 15px currentColor;
         }
-
+        
         .pulse {
-            animation: pulse 1.5s infinite;
+            animation: pulse 2s infinite;
         }
-
+        
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-
+        
         .gradient-text {
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
-
-        /* Информация */
-        .info-container {
-            padding: 15px;
-            text-align: center;
-        }
-
-        /* Снежинки */
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            color: white;
-            pointer-events: none;
-            animation: snowfall linear infinite;
-        }
-
-        @keyframes snowfall {
-            to {
-                transform: translateY(100vh) translateX(var(--end-x));
-            }
-        }
     </style>
 </head>
 <body>
     <div class="profile-container">
+        <!-- Баннер -->
         <div class="banner"></div>
-        <div class="avatar"></div>
-        <div class="nickname"></div>
-        <div class="roles-container"></div>
-        <div class="info-container"></div>
+
+        <!-- Аватар, ник и роли -->
+        <div class="profile-header">
+            <div class="avatar">🫧 </div>
+            <div class="nickname">MQVON</div>
+            <div class="roles">
+                <div class="role role-legend">Легенда</div>
+                <div class="role role-user">Пользователь</div>
+            </div>
+        </div>
+
+        <!-- Информация -->
+        <div class="info">
+            <p>Боец</p>
+            <p>ID:<strong> </strong>1688880140</p>
+            <p>USERNAME:</strong>@MQVON</p>
+            <p> <i>isizisiz</i></p>
+        </div>
     </div>
 
     <script>
-        // КОНФИГУРАЦИЯ (меняйте здесь всё!)
+        // КОНФИГ (настраивайте здесь всё)
         const config = {
             // Баннер и аватар
-            bannerImage: "https://i.imgur.com/8Km9tLL.jpg",
-            avatarImage: "https://i.imgur.com/J6l19aF.jpg",
-
+            images: {
+                banner: "https://media0.giphy.com/media/lKaeQAunM3hZaqsOpj/giphy.gif",
+                avatar: "https://edge-cdn-forummatrpru.matrp.ru/data/avatars/o/165/165267.jpg"
+            },
+            
             // Никнейм
             nickname: {
                 text: "MQVON",
-                color: ["#FF4500", "#FF8C00"], // Градиент (или просто цвет)
-                effect: "glow" // "none", "glow", "pulse"
+                color: "#FF4500", // или массив для градиента ["#FF4500", "#FF8C00"]
+                effect: "none" // "none", "glow", "pulse"
             },
-
+            
             // Роли (добавляйте сколько нужно)
             roles: [
                 {
                     name: "Легенда",
                     color: "white",
-                    bgColor: ["#FF4500", "#FF8C00"], // Градиент
-                    effect: "pulse"
+                    bgColor: "#FF4500", // или массив для градиента ["#FF0000", "#FFA500"]
+                    effect: "none" // "none", "glow", "pulse"
                 },
                 {
                     name: "VIP",
                     color: "gold",
                     bgColor: "#333",
                     effect: "glow"
-                },
-                {
-                    name: "Игрок",
-                    color: "white",
-                    bgColor: "#555"
                 }
             ],
-
-            // Информация (пишите что нужно)
+            
+            // Информация
             info: [
-                "Уровень: 100",
-                "ID: 123456789",
-                "Статус: В сети"
+                "Боец",
+                "ID: 1688880140",
+                "USERNAME: @MQVON",
+                "isizisiz"
             ],
-
+            
             // Эффекты
             effects: {
                 snow: true,
-                snowflakesCount: 30
+                snowflakeCount: 50
             }
         };
 
         // Применяем конфиг
         function applyConfig() {
             // Баннер и аватар
-            document.querySelector('.banner').style.backgroundImage = `url('${config.bannerImage}')`;
-            document.querySelector('.avatar').style.backgroundImage = `url('${config.avatarImage}')`;
-
+            document.querySelector('.banner').style.backgroundImage = `url('${config.images.banner}')`;
+            document.querySelector('.avatar').style.backgroundImage = `url('${config.images.avatar}')`;
+            
             // Никнейм
             const nickname = document.querySelector('.nickname');
             nickname.textContent = config.nickname.text;
@@ -188,66 +236,71 @@
             } else {
                 nickname.style.color = config.nickname.color;
             }
-
-            // Эффекты для ника
-            if (config.nickname.effect !== 'none') {
+            
+            if (config.nickname.effect !== "none") {
                 nickname.classList.add(config.nickname.effect);
             }
-
+            
             // Роли
-            const rolesContainer = document.querySelector('.roles-container');
+            const rolesContainer = document.querySelector('.roles');
             rolesContainer.innerHTML = '';
             
             config.roles.forEach(role => {
-                const roleEl = document.createElement('div');
-                roleEl.className = 'role';
-                roleEl.textContent = role.name;
-                roleEl.style.color = role.color;
+                const roleElement = document.createElement('div');
+                roleElement.className = 'role';
+                roleElement.textContent = role.name;
+                roleElement.style.color = role.color;
                 
-                // Градиент или цвет
                 if (Array.isArray(role.bgColor)) {
-                    roleEl.style.background = `linear-gradient(to right, ${role.bgColor.join(', ')})`;
+                    roleElement.style.backgroundImage = `linear-gradient(to right, ${role.bgColor.join(', ')})`;
                 } else {
-                    roleEl.style.backgroundColor = role.bgColor;
+                    roleElement.style.backgroundColor = role.bgColor;
                 }
                 
-                // Эффекты
-                if (role.effect) {
-                    roleEl.classList.add(role.effect);
+                if (role.effect !== "none") {
+                    roleElement.classList.add(role.effect);
                 }
                 
-                rolesContainer.appendChild(roleEl);
+                rolesContainer.appendChild(roleElement);
             });
-
+            
             // Информация
-            document.querySelector('.info-container').innerHTML = 
-                config.info.map(item => `<p>${item}</p>`).join('');
+            const infoContainer = document.querySelector('.info');
+            infoContainer.innerHTML = config.info.map((item, index) => {
+                if (index === config.info.length - 1) {
+                    return `<p><i>${item}</i></p>`;
+                }
+                return `<p>${item}</p>`;
+            }).join('');
+        }
 
-            // Снежинки
+        // Снежинки (оригинальный код)
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.textContent = '❄';
+            snowflake.className = 'snowflake';
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+            snowflake.style.setProperty('--end-x', `${Math.random() * 200 - 100}px`);
+            document.body.appendChild(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+                createSnowflake();
+            });
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            applyConfig();
+            
             if (config.effects.snow) {
-                createSnowflakes();
+                for (let i = 0; i < config.effects.snowflakeCount; i++) {
+                    setTimeout(createSnowflake, Math.random() * 5000);
+                }
             }
-        }
-
-        // Создаем снежинки
-        function createSnowflakes() {
-            for (let i = 0; i < config.effects.snowflakesCount; i++) {
-                setTimeout(() => {
-                    const snowflake = document.createElement('div');
-                    snowflake.className = 'snowflake';
-                    snowflake.innerHTML = '❄';
-                    snowflake.style.left = `${Math.random() * 100}vw`;
-                    snowflake.style.animationDuration = `${3 + Math.random() * 7}s`;
-                    snowflake.style.fontSize = `${8 + Math.random() * 12}px`;
-                    snowflake.style.opacity = Math.random();
-                    snowflake.style.setProperty('--end-x', `${Math.random() * 100 - 50}px`);
-                    document.body.appendChild(snowflake);
-                }, Math.random() * 3000);
-            }
-        }
-
-        // Запускаем при загрузке
-        window.addEventListener('DOMContentLoaded', applyConfig);
+        });
     </script>
 </body>
 </html>
